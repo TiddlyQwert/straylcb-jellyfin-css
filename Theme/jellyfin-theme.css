@@ -80,3 +80,9 @@ button:has(.buttonText:contains("Record")) {
 .emby-tabs .emby-tabs-slider a.emby-tab-button.emby-button[data-index="5"] {
   display: none !important;
 }
+
+/* Hide Live TV navigation buttons - Recordings and Series */
+a[is="emby-linkbutton"][href*="livetv.html?tab=3"],
+a[is="emby-linkbutton"][href*="livetv.html?tab=5"] {
+  display: none !important;
+}

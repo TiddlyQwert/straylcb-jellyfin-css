@@ -72,3 +72,11 @@ button:has(.buttonText:contains("Record")) {
 .emby-tabs .emby-tabs-slider a.emby-tab-button.emby-button[data-index="3"] {
   display: none !important;
 }
+
+/* Hide the "Series" tab in Live TV header navigation */
+.headerTabs .emby-tabs-slider .emby-tab-button.emby-button[data-index="5"],
+.emby-tabs .emby-tabs-slider .emby-tab-button.emby-button[data-index="5"],
+.headerTabs .emby-tabs-slider a.emby-tab-button.emby-button[data-index="5"],
+.emby-tabs .emby-tabs-slider a.emby-tab-button.emby-button[data-index="5"] {
+  display: none !important;
+}

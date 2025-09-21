@@ -85,6 +85,8 @@ button:has(.buttonText:contains("Record")) {
 a[is="emby-linkbutton"][href*="livetv.html?tab=3"],
 a[is="emby-linkbutton"][href*="livetv.html?tab=5"],
 a[is="emby-linkbutton"][href*="livetv.html?tab=3&"],
-a[is="emby-linkbutton"][href*="livetv.html?tab=5&"] {
+a[is="emby-linkbutton"][href*="livetv.html?tab=5&"],
+a[is="emby-linkbutton"][href*="livetv.html?tab=3&amp;"],
+a[is="emby-linkbutton"][href*="livetv.html?tab=5&amp;"] {
   display: none !important;
 }

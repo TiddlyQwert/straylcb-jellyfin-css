@@ -1,0 +1,74 @@
+/*
+ * Custom Jellyfin Theme
+ * 
+ * This theme builds upon ElegantFin and adds custom library organization
+ * and DVR/Live TV hiding functionality.
+ */
+
+/* Base theme imports - ElegantFin theme and media bar plugin support */
+@import url("https://cdn.jsdelivr.net/gh/lscambo13/ElegantFin@main/Theme/ElegantFin-jellyfin-theme-build-latest-minified.css");
+@import url("https://cdn.jsdelivr.net/gh/lscambo13/ElegantFin@main/Theme/assets/add-ons/media-bar-plugin-support-latest-min.css");
+
+/* ===== LIBRARY ORGANIZATION ===== */
+/* Order libraries in specific sequence on home page */
+#homeTab .itemsContainer .card[data-id="f137a2dd21bbc1b99aa5c0f6bf02a805"] { order: 1 !important; } /* Movies */
+#homeTab .itemsContainer .card[data-id="a656b907eb3a73532e40e44b968d0225"] { order: 2 !important; } /* Shows */
+#homeTab .itemsContainer .card[data-id="7e64e319657a9516ec78490da03edccb"] { order: 3 !important; } /* Music */
+#homeTab .itemsContainer .card[data-id="9d7ad6afe9afa2dab1a2f6e00ad28fa6"] { order: 4 !important; } /* Collections */
+#homeTab .itemsContainer .card[data-id="3b313b0052cb8f4246bb07a7a4c10dbf"] { order: 5 !important; } /* Playlists */
+
+/* ===== HIDE DVR/RECORDING LIBRARIES ===== */
+/* Hide DVR-related libraries from home page */
+#homeTab .itemsContainer .card[data-id="63e31d811dd150914d17126747e936aa"], /* Recorded Movies */
+#homeTab .itemsContainer .card[data-id="ef1a83be1963fd6974bc6e5901eb87c5"], /* Recorded Shows */
+#homeTab .itemsContainer .card[data-id="79a2726d3c50e769a8af1e4184e4fccf"]  /* Recordings */
+{ display: none !important; }
+
+/* ===== HIDE LIVE TV ELEMENTS ===== */
+/* Hide Live TV from My Media row */
+#homeTab .itemsContainer .card[data-id="843edf4198f7bb4963edd4ee2fd7c9fb"] {
+  display: none !important;
+}
+
+/* Hide the "On Now" section on Home */
+#homeTab .sectionTitleContainer:has(a[href*="IsAiring=true"]),
+#homeTab .sectionTitleContainer:has(a[href*="IsAiring=true"]) ~ .emby-scrollbuttons,
+#homeTab .sectionTitleContainer:has(a[href*="IsAiring=true"]) ~ .emby-scroller {
+  display: none !important;
+}
+
+/* ===== GLOBAL DVR/RECORDING HIDING ===== */
+/* Hide recorded content links across all menus and interfaces */
+a[href*="63e31d811dd150914d17126747e936aa"],
+a[data-id="63e31d811dd150914d17126747e936aa"],
+button[data-id="63e31d811dd150914d17126747e936aa"],
+a[href*="ef1a83be1963fd6974bc6e5901eb87c5"],
+a[data-id="ef1a83be1963fd6974bc6e5901eb87c5"],
+button[data-id="ef1a83be1963fd6974bc6e5901eb87c5"],
+a[href*="79a2726d3c50e769a8af1e4184e4fccf"],
+a[data-id="79a2726d3c50e769a8af1e4184e4fccf"],
+button[data-id="79a2726d3c50e769a8af1e4184e4fccf"] {
+  display: none !important;
+}
+
+/* ===== HIDE RECORDING FUNCTIONALITY ===== */
+/* Hide all "Record" buttons throughout the app */
+button:has(.recordingIcon),
+.emby-button:has(.recordingIcon),
+.paper-icon-button-light:has(.recordingIcon) {
+  display: none !important;
+}
+
+/* Hide text-based "Record" buttons without icons */
+.emby-button:has(.buttonText:contains("Record")),
+button:has(.buttonText:contains("Record")) {
+  display: none !important;
+}
+
+/* Hide the "Recordings" tab in header navigation */
+.headerTabs .emby-tabs-slider .emby-tab-button.emby-button[data-index="3"],
+.emby-tabs .emby-tabs-slider .emby-tab-button.emby-button[data-index="3"],
+.headerTabs .emby-tabs-slider a.emby-tab-button.emby-button[data-index="3"],
+.emby-tabs .emby-tabs-slider a.emby-tab-button.emby-button[data-index="3"] {
+  display: none !important;
+}

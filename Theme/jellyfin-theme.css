@@ -81,20 +81,32 @@ button:has(.buttonText:contains("Record")) {
   display: none !important;
 }
 
-/* Hide Live TV navigation buttons - Recordings and Series (high specificity) */
+/* Hide the "Schedule" tab in Live TV header navigation */
+.headerTabs .emby-tabs-slider .emby-tab-button.emby-button[data-index="4"],
+.emby-tabs .emby-tabs-slider .emby-tab-button.emby-button[data-index="4"],
+.headerTabs .emby-tabs-slider a.emby-tab-button.emby-button[data-index="4"],
+.emby-tabs .emby-tabs-slider a.emby-tab-button.emby-button[data-index="4"] {
+  display: none !important;
+}
+
+/* Hide Live TV navigation buttons - Recordings, Series and Schedule */
 div.scrollSlider a[is="emby-linkbutton"][href*="livetv.html?tab=3"],
+div.scrollSlider a[is="emby-linkbutton"][href*="livetv.html?tab=4"],
 div.scrollSlider a[is="emby-linkbutton"][href*="livetv.html?tab=5"],
 div.scrollSlider a[is="emby-linkbutton"][href*="livetv.html?tab=3&"],
+div.scrollSlider a[is="emby-linkbutton"][href*="livetv.html?tab=4&"],
 div.scrollSlider a[is="emby-linkbutton"][href*="livetv.html?tab=5&"],
 div.scrollSlider a[is="emby-linkbutton"][href*="livetv.html?tab=3&amp;"],
+div.scrollSlider a[is="emby-linkbutton"][href*="livetv.html?tab=4&amp;"],
 div.scrollSlider a[is="emby-linkbutton"][href*="livetv.html?tab=5&amp;"],
 .focuscontainer-x a[is="emby-linkbutton"][href*="livetv.html?tab=3"],
+.focuscontainer-x a[is="emby-linkbutton"][href*="livetv.html?tab=4"],
 .focuscontainer-x a[is="emby-linkbutton"][href*="livetv.html?tab=5"],
 .focuscontainer-x a[is="emby-linkbutton"][href*="livetv.html?tab=3&"],
+.focuscontainer-x a[is="emby-linkbutton"][href*="livetv.html?tab=4&"],
 .focuscontainer-x a[is="emby-linkbutton"][href*="livetv.html?tab=5&"],
 .focuscontainer-x a[is="emby-linkbutton"][href*="livetv.html?tab=3&amp;"],
+.focuscontainer-x a[is="emby-linkbutton"][href*="livetv.html?tab=4&amp;"],
 .focuscontainer-x a[is="emby-linkbutton"][href*="livetv.html?tab=5&amp;"] {
   display: none !important;
-  visibility: hidden !important;
-  opacity: 0 !important;
 }

@@ -27,7 +27,7 @@ To use this theme in your Jellyfin server:
 3. Add the following import statement:
 
 ```css
-@import url("https://cdn.jsdelivr.net/gh/TiddlyQwert/straylcb-jellyfin-css@main/Theme/jellyfin-theme.css");
+@import url("https://cdn.jsdelivr.net/gh/TiddlyQwert/straylcb-jellyfin-css@latest/Theme/jellyfin-theme.css");
 ```
 
 ## Customization

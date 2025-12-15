@@ -6,17 +6,6 @@ A custom CSS theme for Jellyfin that builds upon ElegantFin and adds library org
 
 - **Base Theme**: Built on top of the beautiful ElegantFin theme
 - **Library Organization**: Automatically orders your home page libraries (Movies → Shows → Music → Collections → Playlists)
-- **DVR/Recording Cleanup**: Completely hides all DVR, recording, and Live TV elements
-- **Clean Interface**: Removes clutter for users who don't use Jellyfin's TV recording features
-
-## What Gets Hidden
-
-- DVR-related libraries (Recorded Movies, Recorded Shows, Recordings)
-- Live TV library from home page
-- "On Now" section
-- All "Record" buttons throughout the interface
-- "Recordings" tab in navigation
-- Recording-related menu items and links
 
 ## Installation
 

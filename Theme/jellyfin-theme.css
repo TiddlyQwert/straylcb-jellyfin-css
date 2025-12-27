@@ -10,3 +10,14 @@
 /* Base theme imports - ElegantFin theme and media bar plugin support */
 @import url("https://cdn.jsdelivr.net/gh/lscambo13/ElegantFin@main/Theme/ElegantFin-theme-nightly.css");
 @import url("https://cdn.jsdelivr.net/gh/lscambo13/ElegantFin@main/Theme/assets/add-ons/media-bar-plugin-support-nightly.css");
+
+/* ===== LIBRARY ORGANIZATION ===== */
+/* Order libraries in specific sequence on home page */
+#homeTab .itemsContainer .card[data-id="f137a2dd21bbc1b99aa5c0f6bf02a805"] { order: 1 !important; } /* Movies */
+#homeTab .itemsContainer .card[data-id="a656b907eb3a73532e40e44b968d0225"] { order: 2 !important; } /* Shows */
+#homeTab .itemsContainer .card[data-id="0c41907140d802bb58430fed7e2cd79e"] { order: 3 !important; } /* Anime */
+#homeTab .itemsContainer .card[data-id="7e64e319657a9516ec78490da03edccb"] { order: 4 !important; } /* Music */
+#homeTab .itemsContainer .card[data-id="3aeb99515c5a4d67fe12f482a99e3d6c"] { order: 5 !important; } /* AudioBooks */
+#homeTab .itemsContainer .card[data-id="9d7ad6afe9afa2dab1a2f6e00ad28fa6"] { order: 6 !important; } /* Collections */
+#homeTab .itemsContainer .card[data-id="3b313b0052cb8f4246bb07a7a4c10dbf"] { order: 7 !important; } /* Playlists */
+

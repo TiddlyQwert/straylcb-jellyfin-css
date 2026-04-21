@@ -4,7 +4,7 @@
  * This theme builds upon ElegantFin and adds custom library organization
  * and DVR/Live TV hiding functionality.
  * 
- * Last updated: September 21, 2025
+ * Last updated: April 21, 2026
  */
 
 /* Base theme imports - ElegantFin theme and media bar plugin support */
@@ -18,6 +18,6 @@
 #homeTab .itemsContainer .card[data-id="0c41907140d802bb58430fed7e2cd79e"] { order: 3 !important; } /* Anime */
 #homeTab .itemsContainer .card[data-id="7e64e319657a9516ec78490da03edccb"] { order: 4 !important; } /* Music */
 #homeTab .itemsContainer .card[data-id="3aeb99515c5a4d67fe12f482a99e3d6c"] { order: 5 !important; } /* AudioBooks */
-#homeTab .itemsContainer .card[data-id="9d7ad6afe9afa2dab1a2f6e00ad28fa6"] { order: 6 !important; } /* Collections */
-#homeTab .itemsContainer .card[data-id="3b313b0052cb8f4246bb07a7a4c10dbf"] { order: 7 !important; } /* Playlists */
-
+#homeTab .itemsContainer .card[data-id="8f3e04c1bc361191c16f63a5c8f9c190"] { order: 6 !important; } /* Games */
+#homeTab .itemsContainer .card[data-id="9d7ad6afe9afa2dab1a2f6e00ad28fa6"] { order: 7 !important; } /* Collections */
+#homeTab .itemsContainer .card[data-id="3b313b0052cb8f4246bb07a7a4c10dbf"] { order: 8 !important; } /* Playlists */

@@ -4,7 +4,7 @@
  * This theme builds upon ElegantFin and adds custom library organization
  * and DVR/Live TV hiding functionality.
  * 
- * Last updated: April 21, 2026
+ * Last updated: October 6, 2026
  */
 
 /* Base theme imports - ElegantFin theme and media bar plugin support */
@@ -21,3 +21,71 @@
 #homeTab .itemsContainer .card[data-id="8f3e04c1bc361191c16f63a5c8f9c190"] { order: 6 !important; } /* Games */
 #homeTab .itemsContainer .card[data-id="9d7ad6afe9afa2dab1a2f6e00ad28fa6"] { order: 7 !important; } /* Collections */
 #homeTab .itemsContainer .card[data-id="3b313b0052cb8f4246bb07a7a4c10dbf"] { order: 8 !important; } /* Playlists */
+
+/* ===== MEDIA BAR v6 ALIGNMENT FIX =====
+   The media bar plugin v6 (slideshowpure.css) anchors the title block with
+   bottom: calc(var(--slideshow-height) - var(--slideshow-content-top) + ...),
+   assuming #slides-container is a full 100vh tall. ElegantFin's media-bar
+   add-on shrinks the stage to 62% of the viewport and offsets it below the
+   app bar, so the v6 anchor lands above the stage's top edge and the title
+   stack is shoved up and clipped by .slide { overflow: hidden }.
+
+   Fix: re-anchor against the real stage geometry —
+     bottom = stageHeight(100% of actual stage) - contentTop + dotsReserve + stageTop
+   The max-height cap guarantees the block never exceeds the space above the
+   home rows, so it can never be clipped. */
+
+/* Mirror the stage's top offset as set by ElegantFin's add-on
+   (base: below two app bars; >=75em: below one; TV flips at 100em). */
+:root {
+  --ssfix-stage-top: calc(var(--appBarHeight) * 2 + 1.25em);
+}
+@media (min-width: 75em) {
+  :root {
+    --ssfix-stage-top: calc(var(--appBarHeight) + 1.25em);
+  }
+  .layout-tv {
+    --ssfix-stage-top: calc(var(--appBarHeight) * 2 + 1.25em);
+  }
+}
+@media (min-width: 100em) {
+  .layout-tv {
+    --ssfix-stage-top: calc(var(--appBarHeight) + 1.25em);
+  }
+}
+
+/* Default layout: re-anchor the title block (also covers portrait — the
+   formula picks up the correct --slideshow-content-top automatically). */
+#slides-container .slide-content {
+  bottom: calc(
+    100% - var(--slideshow-content-top) + var(--slideshow-dots-reserve) +
+      var(--ssfix-stage-top)
+  );
+  max-height: calc(
+    var(--slideshow-content-top) - var(--slideshow-dots-reserve) -
+      var(--ssfix-stage-top)
+  );
+}
+
+/* Plate and marquee layouts (plugin uses ID selectors for these). */
+:root #slides-container.layout-plate .slide-content,
+:root #slides-container.layout-marquee .slide-content {
+  bottom: calc(
+    100% - var(--slideshow-content-top) + var(--slideshow-dots-reserve) +
+      var(--ssfix-stage-top)
+  );
+}
+
+/* Pagination dots on the title block's baseline. */
+#slides-container .dots-container {
+  bottom: calc(
+    100% - var(--slideshow-content-top) + var(--slideshow-dots-reserve) +
+      var(--ssfix-stage-top)
+  );
+}
+:root #slides-container.layout-plate .dots-container {
+  bottom: calc(
+    100% - var(--slideshow-content-top) + var(--slideshow-page-offset, 0px) +
+      3vh + var(--ssfix-stage-top)
+  );
+}

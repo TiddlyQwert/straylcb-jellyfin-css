@@ -6,7 +6,7 @@ A custom CSS theme for Jellyfin that builds upon ElegantFin and adds library org
 
 - **Base Theme**: Built on top of the beautiful ElegantFin theme
 - **Library Organization**: Automatically orders your home page libraries (Movies → Shows → Music → Collections → Playlists)
-- **Media bar (slideshow) fixes**: Alignment and stage-height patches for the [Jellyfin Media Bar plugin](https://github.com/IAmParadox27/jellyfin-plugin-media-bar) v6 under ElegantFin
+- **Media bar (slideshow) fixes**: Alignment, stage-height, and dots/arrows patches for the [Jellyfin Media Bar plugin](https://github.com/IAmParadox27/jellyfin-plugin-media-bar) v6 under ElegantFin
 
 ## Installation
 
@@ -22,18 +22,13 @@ To use this theme in your Jellyfin server:
 
 ## Media bar plugin (pinned)
 
-The media bar plugin's CSS/JS are loaded by Jellyfin's `index.html`, **not** by this theme. Pin them to a commit SHA (instead of `@main`) so upstream auto-updates can't silently break the layout again — this is what bit us on 2026-10-06.
+The media bar plugin's CSS/JS are injected into `index.html` by the plugin itself, **not** by this theme. Its source ref is controlled by the plugin's own config, which survives Jellyfin upgrades (unlike editing `index.html`).
 
-On the Jellyfin server, edit `jellyfin-web/index.html` and use:
+**Dashboard → Plugins → Media Bar → Settings:**
+- **Version**: `500c01292cdebf8c18ae6984ede10627cf106365` (a commit SHA, not `main`)
+- **Allow unpinned refs**: unchecked
 
-```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/IAmParadox27/jellyfin-plugin-media-bar@500c01292cdebf8c18ae6984ede10627cf106365/slideshowpure.css"/>
-<script src="https://cdn.jsdelivr.net/gh/IAmParadox27/jellyfin-plugin-media-bar@500c01292cdebf8c18ae6984ede10627cf106365/slideshowpure.js"></script>
-```
-
-> **⚠️ Jellyfin upgrades rewrite `index.html` — re-apply this snippet after every server update.**
-
-To update to a newer plugin version later, find the latest commit SHA on the plugin repo's `main` branch and replace the SHA in both URLs.
+This pins the frontend to a known-good commit so upstream `@main` updates can't silently break the layout again — this is what bit us on 2026-10-06. The config is stored server-side in `plugins/configurations/Jellyfin.Plugin.MediaBar.xml` (`VersionString` + `AllowUnpinnedRefs`). To update to a newer plugin frontend later, replace the SHA with the latest commit on the plugin repo's `main` branch.
 
 ## ElegantFin pins
 

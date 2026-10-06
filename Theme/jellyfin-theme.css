@@ -99,14 +99,28 @@
    lands BELOW the rows' top edge and the backdrop card slides underneath
    the rows. The plugin's native design intends that (full-viewport hero
    with a bottom fade), but with ElegantFin's bordered-card stage it reads
-   as a layout bug.
+   as a layout bug — on phones the rows covered the bottom 45% of the card.
 
-   Fix: size the stage to end exactly where the rows begin. All the
-   100%-based anchors above adapt automatically. Landscape only — portrait
-   keeps the plugin's default full-height hero behavior. */
-@media (orientation: landscape) {
+   Fix: size the stage to end exactly where the rows begin, in EVERY
+   orientation. All the 100%-based anchors above adapt automatically. */
+#slides-container {
+  height: calc(var(--slideshow-content-top) - var(--ssfix-stage-top));
+}
+
+/* ===== MOBILE PORTRAIT =====
+   Phones have a single-row header, so the add-on's two-app-bar offset
+   leaves a dead band above the card — use one. And hide the pagination
+   dots: swipe gestures replace them, and once the stage ends at the rows
+   there is no free space below the title panel where they could sit. */
+@media (max-width: 767px) and (orientation: portrait) {
+  :root {
+    --ssfix-stage-top: calc(var(--appBarHeight) + 1.25em) !important;
+  }
   #slides-container {
-    height: calc(var(--slideshow-content-top) - var(--ssfix-stage-top));
+    top: var(--ssfix-stage-top) !important;
+  }
+  #slides-container .dots-container {
+    display: none !important;
   }
 }
 

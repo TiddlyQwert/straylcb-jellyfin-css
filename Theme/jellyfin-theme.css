@@ -109,3 +109,20 @@
     height: calc(var(--slideshow-content-top) - var(--ssfix-stage-top));
   }
 }
+
+/* ===== DOTS / ARROWS INSIDE THE STAGE =====
+   The plugin centers the 36px-tall prev/next arrows on the 6px dots line.
+   With a full-viewport stage the ~4px that pokes below the stage bottom is
+   invisible; once the stage ends exactly at the rows (fix above), the
+   arrows straddle the card edge and stick into "My Media". Shift the pair
+   up so both sit comfortably inside the card, still on one line.
+   !important beats the inline styles the plugin JS sets on every slide. */
+#slides-container .dots-container {
+  top: auto !important;
+  bottom: 28px !important;
+}
+#slides-container .arrow {
+  top: auto !important;
+  bottom: 13px !important;
+  transform: none !important;
+}

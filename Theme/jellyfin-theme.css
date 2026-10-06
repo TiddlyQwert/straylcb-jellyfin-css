@@ -7,9 +7,11 @@
  * Last updated: October 6, 2026
  */
 
-/* Base theme imports - ElegantFin theme and media bar plugin support */
-@import url("https://cdn.jsdelivr.net/gh/lscambo13/ElegantFin@main/Theme/ElegantFin-theme-nightly.css");
-@import url("https://cdn.jsdelivr.net/gh/lscambo13/ElegantFin@main/Theme/assets/add-ons/media-bar-plugin-support-nightly.css");
+/* Base theme imports - ElegantFin theme and media bar plugin support.
+   Pinned to commit SHAs: @main refs auto-update and previously broke the
+   media bar layout silently (ElegantFin add-on vs media bar plugin v6). */
+@import url("https://cdn.jsdelivr.net/gh/lscambo13/ElegantFin@d26a8e45d7d7753197b440926b94d1673196d31e/Theme/ElegantFin-theme-nightly.css");
+@import url("https://cdn.jsdelivr.net/gh/lscambo13/ElegantFin@2e8bc25e7e4d7586b86494c04bd95d1affc1bad6/Theme/assets/add-ons/media-bar-plugin-support-nightly.css");
 
 /* ===== LIBRARY ORGANIZATION ===== */
 /* Order libraries in specific sequence on home page */
@@ -88,4 +90,22 @@
     100% - var(--slideshow-content-top) + var(--slideshow-page-offset, 0px) +
       3vh + var(--ssfix-stage-top)
   );
+}
+
+/* ===== STAGE HEIGHT / ROW OVERLAP FIX =====
+   Why the bar overlapped "My Media": the plugin anchors the home rows at
+   --slideshow-content-top (65vh) from the page top, but the stage is 62%
+   of the viewport tall and starts below the app bar, so its bottom edge
+   lands BELOW the rows' top edge and the backdrop card slides underneath
+   the rows. The plugin's native design intends that (full-viewport hero
+   with a bottom fade), but with ElegantFin's bordered-card stage it reads
+   as a layout bug.
+
+   Fix: size the stage to end exactly where the rows begin. All the
+   100%-based anchors above adapt automatically. Landscape only — portrait
+   keeps the plugin's default full-height hero behavior. */
+@media (orientation: landscape) {
+  #slides-container {
+    height: calc(var(--slideshow-content-top) - var(--ssfix-stage-top));
+  }
 }
